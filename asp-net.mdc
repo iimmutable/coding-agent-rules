@@ -18,15 +18,19 @@ Organize your projects by by technical layer.
 ### ✅ GOOD: Feature-First Organization
 ```csharp
 src/
-├── MyProject.Api/
+├── MyProject/
+│   ├── AppStart     // All App Start codes including configuration, settings, services building... etc.
 │   ├── Controllers/ // All controllers here
 │   ├── Services/    // All services here
 │   ├── Repositories/ // All repositories here
+│   ├── Libraries/    // All Libraries (DLLs) here
+│   ├── Frontend/     // All frontend codes here
 │   ├── Foundation/  // All Foundation codes here
 │   │    ├── Abstracts  //All Interface definitions
 │   │    ├── Extensions  //All Extension
 │   │    ├── 
-│   └── DTOs/        // All DTOs here
+│   └── Models/        // All Data Models / DTOs here
+│   └── Views/        // All ASP.Net Core views here
 ```
 
 ## 2. API Design: Minimal APIs vs. API Controllers
