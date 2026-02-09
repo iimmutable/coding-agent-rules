@@ -1,0 +1,119 @@
+---
+description: This comprehensive Flutter/Dart development rules document for AI coding agents combines essential guidance from both the Flutter official documentation and the AI-specific rules. It covers all critical aspects of Flutter development while maintaining a concise format that's easy for AI assistants to follow. The document prioritizes the most important rules while ensuring no critical guidance is missed, covering widget construction, performance, state management, code organization, testing, navigation, error handling, internationalization, and accessibility.
+This guide defines definitive Flutter/Dart coding standards and best practices for our team, covering naming, formatting, modern language features, performance, security, and error handling to ensure consistent, maintainable, and high-quality code.
+globs: **/*.dart
+---
+```md
+# Flutter Development Rules (.MDC)
+
+## Language
+- Dart
+
+## Framework
+- Flutter
+
+## Top Priority Rules
+
+### Widget Construction
+- **Use `const` constructors** whenever possible for widgets that don't change
+- **Create reusable widgets** for UI patterns that appear multiple times
+- **Minimize widget tree depth** to reduce rebuilds
+- **Use `RepaintBoundary`** around expensive widgets that don't change often
+
+### Performance Optimization
+- **Use `ListView.builder` and `GridView.builder`** for lists with many items
+- **Avoid expensive operations in build methods**
+- **Implement proper resource disposal** in `dispose()` methods
+- **Apply const liberally** to reduce unnecessary rebuilds
+
+### State Management
+- **Keep state as close as possible** to where it's used
+- **Choose appropriate state management** based on complexity:
+  * Simple: `StatefulWidget` with local state
+  * Features: Provider, Riverpod, or similar
+  * Complex: Bloc, Redux or GetX
+- **Use immutable state structures**
+- **Update state with appropriate `setState`, `notifyListeners`, or equivalents`
+
+## General Rules
+
+### Code Organization
+- **Feature-first structure**: Group files by feature rather than file type
+- **Keep files small** and focused on single responsibility
+- **Use descriptive names** that clearly indicate purpose
+- **Follow Dart's official style guide**
+- **Use trailing commas** for multi-line parameters
+- **Apply consistent formatting** (equivalent to `flutter format`)
+
+### Asynchronous Operations
+- **Use `FutureBuilder`** for asynchronous data fetching
+- **Use `StreamBuilder`** for stream-based data
+- **Handle loading/error states** in builders
+- **Avoid async operations in build methods**
+
+### Testing
+- **Test widgets in isolation** with mock dependencies
+- **Use `WidgetTester`** for basic widget rendering tests
+- **Prefer `find.byKey`** for locating widgets
+- **Include both widget and integration tests** for critical functionality
+
+### Navigation
+- **Use named routes** for navigation
+- **Prefer declarative navigation** (`Navigator.pushNamed`)
+- **Implement centralized navigation** for complex apps
+
+### Error Handling
+- **Wrap widgets in `ErrorWidget`** or custom error boundaries
+- **Implement proper error recovery** when possible
+- **Provide meaningful error messages** to users
+
+### Internationalization & Accessibility
+- **Use `intl` package** for internationalization
+- **Extract all strings** to localization files
+- **Support both LTR and RTL** layouts
+- **Follow WCAG guidelines** for contrast and interactive elements
+- **Provide semantic labels** for interactive elements
+
+## Best Practices
+
+### Resource Management
+- **Release resources in `dispose()` methods**
+- **Use `Image.network`** with caching for remote images
+- **Implement lazy loading** for heavy components
+
+### Animations & Transitions
+- **Use `Hero` widget** for shared element animations
+- **Leverage implicit animations** for simple UI transitions
+- **Use `AnimatedBuilder`** for complex animations
+
+### Dependencies
+- **Use dependency injection** for external dependencies
+- **Keep dependencies minimal** and well-maintained
+- **Regularly update dependencies** with security patches
+- **Configure `pubspec.yaml`** correctly with metadata and dependencies
+
+### Error Handling
+- **Wrap widgets in `ErrorWidget`** or custom error boundaries
+- **Implement proper error recovery** when possible
+- **Provide meaningful error messages** to users
+
+## Avoid
+
+- **Non-const constructors** for static widgets
+- **Deep widget nesting** where possible
+- **Hard-coded strings**; use localization
+- **Ignoring accessibility** requirements
+- **Skipping proper resource disposal**
+- **Complex logic in build methods**
+- **Directly accessing global state** without proper management
+
+## Notes
+
+- **Everything in Flutter is a widget** - compose UIs using small, focused widgets
+- **State vs. UI separation** - keep state management separate from presentation
+- **Performance mindset** - prioritize const and builder widgets
+- **Widget composition over inheritance** - build UIs through widget composition
+- **Clear naming conventions** - use names that clearly indicate purpose
+- **Use `debugPrint` sparingly** in production code
+- **Profile with DevTools** to identify performance bottlenecks
+```
